@@ -1,12 +1,13 @@
 import type { ConfigurationChangeEvent, StatusBarItem } from 'vscode';
 import { Disposable, StatusBarAlignment, window } from 'vscode';
+import { ToggleMode } from './config';
 import type { Commands, CoreConfiguration } from './constants';
 import { extensionPrefix } from './constants';
 import type { Container } from './container';
 import { configuration } from './system/configuration';
 
 export class StatusBarController implements Disposable {
-	private _disposable: Disposable;
+	private readonly _disposable: Disposable;
 	private _statusBarItem: StatusBarItem | undefined;
 
 	constructor(private readonly container: Container) {
@@ -27,7 +28,9 @@ export class StatusBarController implements Disposable {
 		if (
 			e == null ||
 			configuration.changed(e, 'statusBar.enabled') ||
-			configuration.changedAny<CoreConfiguration>(e, 'files.exclude')
+			configuration.changed(e, 'mode') ||
+			configuration.changedAny<CoreConfiguration>(e, 'files.exclude') ||
+			configuration.changedAny<CoreConfiguration>(e, 'explorer.excludeGitIgnore')
 		) {
 			this._statusBarItem?.dispose();
 
@@ -44,8 +47,22 @@ export class StatusBarController implements Disposable {
 	private updateStatusBarItem(toggled: boolean) {
 		if (this._statusBarItem == null) return;
 
+		const mode = configuration.get('mode') ?? ToggleMode.Files;
+
 		this._statusBarItem.text = toggled ? '$(eye-closed)' : '$(eye)';
-		this._statusBarItem.tooltip = `${toggled ? 'Hide' : 'Show'} Excluded Files`;
+
+		// Update tooltip based on mode
+		let tooltip: string;
+		if (mode === ToggleMode.Files) {
+			tooltip = `${toggled ? 'Hide' : 'Show'} Files Excluded by files.exclude`;
+		} else if (mode === ToggleMode.GitIgnore) {
+			tooltip = `${toggled ? 'Hide' : 'Show'} Files Excluded by .gitignore`;
+		} else {
+			// Both
+			tooltip = `${toggled ? 'Hide' : 'Show'} Files Excluded by Both`;
+		}
+
+		this._statusBarItem.tooltip = tooltip;
 	}
 
 	private _onExcludeToggled() {

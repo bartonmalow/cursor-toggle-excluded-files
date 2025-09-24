@@ -7,10 +7,17 @@ export enum OutputLevel {
 	Debug = 'debug',
 }
 
+export enum ToggleMode {
+	Files = 'files',
+	GitIgnore = 'gitignore',
+	Both = 'both',
+}
+
 export interface Config {
 	explorer: {
 		enabled: boolean;
 	};
+	mode: ToggleMode;
 	outputLevel: OutputLevel;
 	statusBar: {
 		enabled: boolean;

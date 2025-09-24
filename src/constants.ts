@@ -9,6 +9,7 @@ export type PaletteCommands = {
 	'toggleexcludedfiles.restore': [];
 	'toggleexcludedfiles.show': [];
 	'toggleexcludedfiles.toggle': [];
+	'toggleexcludedfiles.setMode': [];
 };
 
 export type Commands = PaletteCommands;
@@ -18,7 +19,7 @@ export type ContextKeys = `${typeof extensionPrefix}:loaded` | `${typeof extensi
 
 export type CoreCommands = 'vscode.open' | 'setContext';
 
-export type CoreConfiguration = 'files.exclude';
+export type CoreConfiguration = 'files.exclude' | 'explorer.excludeGitIgnore';
 
 export type SecretKeys = never;
 
@@ -31,6 +32,7 @@ export type DeprecatedWorkspaceStorage = object;
 export type WorkspaceStorage = {
 	appliedState: StoredFilesExcludes;
 	savedState: StoredFilesExcludes;
+	gitIgnoreSavedState: boolean;
 };
 
 type ConfigInspect<T> = ReturnType<typeof configuration.inspectAny<CoreConfiguration, T>>;

@@ -77,6 +77,22 @@
 						"markdownDescription": "Specifies whether to show the toggle button in the status bar",
 						"scope": "window"
 					},
+					"toggleexcludedfiles.mode": {
+						"type": "string",
+						"default": "files",
+						"enum": [
+							"files",
+							"gitignore",
+							"both"
+						],
+						"enumDescriptions": [
+							"Toggle files.exclude patterns only",
+							"Toggle explorer.excludeGitIgnore setting only",
+							"Toggle both files.exclude and explorer.excludeGitIgnore simultaneously"
+						],
+						"markdownDescription": "Controls which exclusions to toggle when using the eye icon",
+						"scope": "window"
+					},
 					"toggleexcludedfiles.outputLevel": {
 						"type": "string",
 						"default": "errors",
@@ -114,6 +130,11 @@
 			{
 				"command": "toggleexcludedfiles.toggle",
 				"title": "Toggle Excluded Files",
+				"category": "Files"
+			},
+			{
+				"command": "toggleexcludedfiles.setMode",
+				"title": "Set Toggle Mode",
 				"category": "Files"
 			}
 		],
