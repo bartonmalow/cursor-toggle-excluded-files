@@ -47,20 +47,6 @@ function getExtensionConfig(target, mode, env) {
 		new CleanPlugin(),
 		new ForkTsCheckerPlugin({
 			async: false,
-			eslint: {
-				enabled: true,
-				files: 'src/**/*.ts?(x)',
-				options: {
-					cache: true,
-					cacheLocation: path.join(__dirname, '.eslintcache/', target === 'webworker' ? 'browser/' : ''),
-					cacheStrategy: 'content',
-					fix: mode !== 'production',
-					overrideConfigFile: path.join(
-						__dirname,
-						target === 'webworker' ? '.eslintrc.browser.json' : '.eslintrc.json',
-					),
-				},
-			},
 			formatter: 'basic',
 			typescript: {
 				configFile: path.join(__dirname, target === 'webworker' ? 'tsconfig.browser.json' : 'tsconfig.json'),
@@ -131,7 +117,7 @@ function getExtensionConfig(target, mode, env) {
 							minify: true,
 							target: 'es2022',
 							treeShaking: true,
-					  })
+						})
 					: new TerserPlugin({
 							extractComments: false,
 							parallel: true,
@@ -150,7 +136,7 @@ function getExtensionConfig(target, mode, env) {
 								keep_classnames: true,
 								module: true,
 							},
-					  }),
+						}),
 			],
 			splitChunks:
 				target === 'webworker'
@@ -162,7 +148,7 @@ function getExtensionConfig(target, mode, env) {
 								default: false,
 								vendors: false,
 							},
-					  },
+						},
 		},
 		externals: {
 			vscode: 'commonjs vscode',
@@ -179,13 +165,13 @@ function getExtensionConfig(target, mode, env) {
 								options: {
 									format: 'esm',
 									implementation: esbuild,
-									target: ['es2022', 'chrome102', 'node16.14.2'],
+									target: ['es2022', 'chrome102', 'node20.0.0'],
 									tsconfig: path.join(
 										__dirname,
 										target === 'webworker' ? 'tsconfig.browser.json' : 'tsconfig.json',
 									),
 								},
-						  }
+							}
 						: {
 								loader: 'ts-loader',
 								options: {
@@ -196,7 +182,7 @@ function getExtensionConfig(target, mode, env) {
 									experimentalWatchApi: true,
 									transpileOnly: true,
 								},
-						  },
+							},
 				},
 			],
 		},
@@ -213,7 +199,7 @@ function getExtensionConfig(target, mode, env) {
 				? undefined
 				: {
 						level: 'log', // enables logging required for problem matchers
-				  },
+					},
 		stats: {
 			preset: 'errors-warnings',
 			assets: true,

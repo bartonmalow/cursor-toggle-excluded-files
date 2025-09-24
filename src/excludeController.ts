@@ -19,7 +19,10 @@ export class FilesExcludeController implements Disposable {
 	private readonly _disposable: Disposable;
 	private _working: boolean = false;
 
-	constructor(private readonly container: Container, private readonly storage: Storage) {
+	constructor(
+		private readonly container: Container,
+		private readonly storage: Storage,
+	) {
 		this._disposable = configuration.onDidChangeAny(this.onAnyConfigurationChanged, this);
 		this.onAnyConfigurationChanged();
 	}

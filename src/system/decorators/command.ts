@@ -38,7 +38,6 @@ function _command<T extends UnqualifiedPaletteCommands>(
 		if (!options?.customErrorHandling) {
 			method = async function (this: any, ...args: any[]) {
 				try {
-					// eslint-disable-next-line @typescript-eslint/no-unsafe-return
 					return await descriptor.value.apply(this, options?.args?.(args) ?? args);
 				} catch (ex) {
 					Logger.error(ex);

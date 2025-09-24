@@ -52,20 +52,17 @@ export class Storage implements Disposable {
 	get<T extends keyof GlobalStorage>(key: T, defaultValue: GlobalStorage[T]): GlobalStorage[T];
 	@debug({ logThreshold: 50 })
 	get(key: keyof (GlobalStorage & DeprecatedGlobalStorage), defaultValue?: unknown): unknown | undefined {
-		// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
 		return this.context.globalState.get(`${extensionPrefix}:${key}`, defaultValue);
 	}
 
 	@debug({ logThreshold: 250 })
 	async delete(key: keyof (GlobalStorage & DeprecatedGlobalStorage)): Promise<void> {
-		// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
 		await this.context.globalState.update(`${extensionPrefix}:${key}`, undefined);
 		this._onDidChange.fire({ key: key, workspace: false });
 	}
 
 	@debug({ args: { 1: false }, logThreshold: 250 })
 	async store<T extends keyof GlobalStorage>(key: T, value: GlobalStorage[T] | undefined): Promise<void> {
-		// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
 		await this.context.globalState.update(`${extensionPrefix}:${key}`, value);
 		this._onDidChange.fire({ key: key, workspace: false });
 	}

@@ -1,0 +1,24 @@
+# Build outputs
+dist/
+out/
+*.tsbuildinfo
+
+# Dependencies
+node_modules/
+pnpm-lock.yaml
+
+# VS Code test directories
+**/.vscode-test/
+**/.vscode-test-web/
+
+# Cache files
+.eslintcache*
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp

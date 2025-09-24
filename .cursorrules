@@ -1,0 +1,30 @@
+# Cursor Rules for Toggle Excluded Files Extension
+
+## Project Context
+This is a VS Code extension that toggles the visibility of excluded files in the file explorer. It's built with TypeScript and uses modern development practices.
+
+## Code Style Guidelines
+- Use TypeScript with strict type checking
+- Follow the existing architectural patterns (Container, Controllers, etc.)
+- Maintain the existing logging and error handling patterns
+- Use the established decorator patterns for commands
+- Keep the clean separation of concerns between controllers
+
+## Key Files to Understand
+- `src/extension.ts` - Main entry point
+- `src/container.ts` - Dependency injection container
+- `src/excludeController.ts` - Core functionality for toggling file exclusions
+- `src/commands.ts` - Command registration and handling
+- `src/statusBarController.ts` - Status bar integration
+
+## Development Notes
+- The extension supports both Node.js and browser environments
+- Uses webpack for bundling with esbuild for fast compilation
+- Has sophisticated configuration management with type-safe paths
+- Implements proper VS Code extension lifecycle management
+
+## When Making Changes
+- Maintain backward compatibility with existing VS Code API usage
+- Follow the established error handling patterns with proper logging
+- Update types in constants.ts if adding new configuration options
+- Consider both desktop and web platform compatibility

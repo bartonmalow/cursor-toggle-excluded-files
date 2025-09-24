@@ -12,7 +12,7 @@ export class Container {
 	static #proxy = new Proxy<Container>({} as Container, {
 		get: function (target, prop) {
 			// In case anyone has cached this instance
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-return
+
 			if (Container.#instance != null) return (Container.#instance as any)[prop];
 
 			// Allow access to config before we are initialized

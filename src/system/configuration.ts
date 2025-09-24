@@ -13,7 +13,6 @@ interface ConfigurationOverrides {
 export class Configuration {
 	static configure(context: ExtensionContext): void {
 		context.subscriptions.push(
-			// eslint-disable-next-line @typescript-eslint/no-use-before-define
 			workspace.onDidChangeConfiguration(configuration.onConfigurationChanged, configuration),
 		);
 	}
@@ -337,8 +336,8 @@ export type PathValue<T, P extends Path<T>> = P extends `${infer Key}.${infer Re
 			: never
 		: never
 	: P extends keyof T
-	? T[P]
-	: never;
+		? T[P]
+		: never;
 
 export type ConfigPath = Path<Config>;
 export type ConfigPathValue<P extends ConfigPath> = PathValue<Config, P>;

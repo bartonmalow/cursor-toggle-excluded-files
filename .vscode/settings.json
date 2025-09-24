@@ -1,11 +1,15 @@
 {
 	"editor.codeActionsOnSave": {
-		"source.fixAll.eslint": true
+		"source.fixAll.eslint": "explicit"
 	},
-	"eslint.packageManager": "yarn",
+	"eslint.packageManager": "pnpm",
 	"files.associations": {
 		".eslintrc*.json": "jsonc"
 	},
+	// Cursor-specific settings
+	"cursor.cpp.disabledLanguages": [],
+	"cursor.general.enableAutoImports": true,
+	"cursor.chat.enableCodeContext": true,
 	"files.exclude": {
 		"**/.vscode-test": true,
 		"**/.vscode-test-web": true
@@ -41,7 +45,7 @@
 	"[html][javascript][json][jsonc][markdown][scss][svg][typescript][typescriptreact]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
-	"npm.packageManager": "yarn",
+	"npm.packageManager": "pnpm",
 	"search.exclude": {
 		"**/dist": true
 	},

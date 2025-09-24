@@ -1,41 +1,37 @@
-// A launch configuration that compiles the extension and then opens it inside a new window
 {
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "Run",
+			"name": "Run Extension",
 			"type": "extensionHost",
 			"request": "launch",
 			"runtimeExecutable": "${execPath}",
 			"args": ["--extensionDevelopmentPath=${workspaceFolder}"],
 			"outFiles": ["${workspaceFolder}/dist/**/*.js"],
-			"presentation": {
-				"group": "2_run",
-				"order": 1
-			},
-			"pauseForSourceMap": true,
-			"skipFiles": ["<node_internals>/**", "**/node_modules/**", "**/resources/app/out/vs/**"],
+			"sourceMaps": true,
 			"smartStep": true,
-			"sourceMapRenames": true,
-			"sourceMaps": true
+			"presentation": {
+				"hidden": false,
+				"group": "extension",
+				"order": 1
+			}
 		},
 		{
-			"name": "Watch & Run",
+			"name": "Extension Tests",
 			"type": "extensionHost",
 			"request": "launch",
 			"runtimeExecutable": "${execPath}",
-			"args": ["--extensionDevelopmentPath=${workspaceFolder}"],
-			"outFiles": ["${workspaceFolder}/dist/**/*.js"],
-			"pauseForSourceMap": true,
-			"preLaunchTask": "${defaultBuildTask}",
+			"args": [
+				"--extensionDevelopmentPath=${workspaceFolder}",
+				"--extensionTestsPath=${workspaceFolder}/dist/test"
+			],
+			"outFiles": ["${workspaceFolder}/dist/test/**/*.js"],
+			"sourceMaps": true,
 			"presentation": {
-				"group": "1_watch",
-				"order": 1
-			},
-			"skipFiles": ["<node_internals>/**", "**/node_modules/**", "**/resources/app/out/vs/**"],
-			"smartStep": true,
-			"sourceMapRenames": true,
-			"sourceMaps": true
+				"hidden": false,
+				"group": "extension",
+				"order": 2
+			}
 		}
 	]
 }

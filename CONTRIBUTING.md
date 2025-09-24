@@ -8,26 +8,26 @@ Please note the [Code of Conduct](CODE_OF_CONDUCT.md) document, please follow it
 
 ## Your First Code Contribution
 
-Unsure where to begin contributing? You can start by looking through the [`help-wanted`](https://github.com/eamodio/vscode-toggle-excluded-files/labels/help%20wanted) issues.
+This is a fork of the original Toggle Excluded Files extension, optimized for Cursor IDE. Contributions are welcome to improve Cursor compatibility and functionality.
 
 ### Getting the code
 
 ```
-git clone https://github.com/eamodio/vscode-toggle-excluded-files.git
+git clone https://github.com/mark-saur/cursor-exclude-file-toggle.git
 ```
 
 Prerequisites
 
 - [Git](https://git-scm.com/), `>= 2.7.2`
-- [NodeJS](https://nodejs.org/), `>= 16.14.2`
-- [yarn](https://yarnpkg.com/), `>= 1.22.19`
+- [NodeJS](https://nodejs.org/), `>= 20.0.0`
+- [pnpm](https://pnpm.io/), `>= 7.0.0`
 
 ### Dependencies
 
 From a terminal, where you have cloned the repository, execute the following command to install the required dependencies:
 
 ```
-yarn
+pnpm install
 ```
 
 ### Build
@@ -35,7 +35,7 @@ yarn
 From a terminal, where you have cloned the repository, execute the following command to re-build the project from scratch:
 
 ```
-yarn run rebuild
+pnpm run rebuild
 ```
 
 👉 **NOTE!** This will run a complete rebuild of the project.
@@ -43,7 +43,7 @@ yarn run rebuild
 Or to just run a quick build, use:
 
 ```
-yarn run build
+pnpm run build
 ```
 
 ### Watch
@@ -51,7 +51,7 @@ yarn run build
 During development you can use a watcher to make builds on changes quick and easy. From a terminal, where you have cloned the repository, execute the following command:
 
 ```
-yarn run watch
+pnpm run watch
 ```
 
 Or use the provided `watch` task in VS Code, execute the following from the command palette (be sure there is no `>` at the start):
@@ -68,7 +68,7 @@ This will first do an initial full build and then watch for file changes, compil
 
 ### Formatting
 
-This project uses [prettier](https://prettier.io/) for code formatting. You can run prettier across the code by calling `yarn run pretty` from a terminal.
+This project uses [prettier](https://prettier.io/) for code formatting. You can run prettier across the code by calling `pnpm run pretty` from a terminal.
 
 To format the code as you make changes you can install the [Prettier - Code formatter](https://marketplace.visualstudio.com/items/esbenp.prettier-vscode) extension.
 
@@ -80,7 +80,7 @@ Add the following to your User Settings to run prettier:
 
 ### Linting
 
-This project uses [ESLint](https://eslint.org/) for code linting. You can run ESLint across the code by calling `yarn run lint` from a terminal. Warnings from ESLint show up in the `Errors and Warnings` quick box and you can navigate to them from inside VS Code.
+This project uses [ESLint](https://eslint.org/) for code linting. You can run ESLint across the code by calling `pnpm run lint` from a terminal. Warnings from ESLint show up in the `Errors and Warnings` quick box and you can navigate to them from inside VS Code.
 
 To lint the code as you make changes you can install the [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) extension.
 
@@ -89,13 +89,13 @@ To lint the code as you make changes you can install the [ESLint](https://market
 To generate a production bundle (without packaging) run the following from a terminal:
 
 ```
-yarn run bundle
+pnpm run bundle
 ```
 
 To generate a VSIX (installation package) run the following from a terminal:
 
 ```
-yarn run package
+pnpm run package
 ```
 
 ### Debugging

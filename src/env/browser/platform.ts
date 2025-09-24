@@ -1,5 +1,6 @@
 export const isWeb = true;
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const _platform = (navigator as any)?.userAgentData?.platform;
 const _userAgent = navigator.userAgent;
 
